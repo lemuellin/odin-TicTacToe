@@ -1,0 +1,142 @@
+body{
+    background-color: black;
+}
+
+.header{
+    padding:50px 0px 50px 0px;
+    color:white;
+    text-align: center;
+    font-size: 50px;
+    font-family: Helvetica;
+    font-weight: 100;
+}
+
+.gameboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+
+}
+
+.playerShow1, .playerShow2{
+    color: white;
+    font-family: Helvetica;
+    font-size: 30px;
+}
+
+.player{
+    color: black;
+    font-family: Helvetica;
+    font-size: 40px;
+}
+
+.playerInput{
+    display: flex;
+    gap: 100px;
+}
+
+.playerInput1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+input{
+    padding:10px;
+}
+
+.grid-container{
+    width: 500px;
+    height: 500px;
+    display: grid;
+    background-color: #343a40;
+    border-radius: 10px;
+    padding: 10px;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.playerContainer, .buttonContainer{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grid-item{
+    cursor: pointer;
+    width:113px;
+    height: 113px;
+    background-color: #6c757d;
+    padding: 20px;
+    border: 2px solid #343a40;
+    border-radius: 20px;
+    font-family: helvetica;
+    font-size: 60px;
+    color: #ffd100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item:hover{
+    background-color: #da694d;
+    transition: transform .15s; /* animation*/
+    transform: scale(1.02);
+}
+
+.resultPopup, .playerPopup{
+    display: none;
+    /* place dead center on window*/
+    position: fixed;
+    top: 55%;  /* should be 50% if centered*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 800px;
+    height: 300px;
+    background-color: #e76f51;
+    border-radius: 50px;
+    transition: transform .15s; /* animation*/
+}
+
+.playerContainer2{
+    gap:20px;
+}
+
+.playerContainer2, .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.result{
+    font-size: 50px;
+    font-family: helvetica;
+    padding-top: 30px;
+}
+
+.restart, .start{
+    cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    opacity: 0.8;
+    background-color: #e9c46a;
+    border: none;
+}
+.restart:hover, .start:hover{
+    opacity: 1;
+}
+
+.restart:active, .start:active{
+    transform: translateY(3px);
+}
