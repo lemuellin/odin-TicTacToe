@@ -63,9 +63,23 @@ const Gameboard = (()=>{
         };
 
 
-        if (isSubSet(locX, winCondition.w1)||isSubSet(locX, winCondition.w2)||isSubSet(locX, winCondition.w3)||isSubSet(locX, winCondition.w4)||isSubSet(locX, winCondition.w5)||isSubSet(locX, winCondition.w6)||isSubSet(locX, winCondition.w7)||isSubSet(locX, winCondition.w8)){
+        if (isSubSet(locX, winCondition.w1)
+            ||isSubSet(locX, winCondition.w2)
+            ||isSubSet(locX, winCondition.w3)
+            ||isSubSet(locX, winCondition.w4)
+            ||isSubSet(locX, winCondition.w5)
+            ||isSubSet(locX, winCondition.w6)
+            ||isSubSet(locX, winCondition.w7)
+            ||isSubSet(locX, winCondition.w8)){
             displayResult(1);
-        }else if(isSubSet(locO, winCondition.w1)||isSubSet(locO, winCondition.w2)||isSubSet(locO, winCondition.w3)||isSubSet(locO, winCondition.w4)||isSubSet(locO, winCondition.w5)||isSubSet(locO, winCondition.w6)||isSubSet(locO, winCondition.w7)||isSubSet(locO, winCondition.w8)){
+        }else if(isSubSet(locO, winCondition.w1)
+            ||isSubSet(locO, winCondition.w2)
+            ||isSubSet(locO, winCondition.w3)
+            ||isSubSet(locO, winCondition.w4)
+            ||isSubSet(locO, winCondition.w5)
+            ||isSubSet(locO, winCondition.w6)
+            ||isSubSet(locO, winCondition.w7)
+            ||isSubSet(locO, winCondition.w8)){
             displayResult(2);
         }else if(turn == 9){
             displayResult(3);
@@ -83,32 +97,25 @@ const Gameboard = (()=>{
         }
         closeForm();
 
-        let player1 = document.querySelector(".player1").value;
-        let player2 = document.querySelector(".player2").value;
-
-        document.querySelector(".playerShow1").innerHTML = player1;
-        document.querySelector(".playerShow2").innerHTML = player2;
-        
+        document.querySelector(".playerShow1").innerHTML = playerFactory(1);
+        document.querySelector(".playerShow2").innerHTML = playerFactory(2);
         
     };
 
     const displayResult=(num)=>{
-        let player1 = document.querySelector(".player1").value;
-        let player2 = document.querySelector(".player2").value;
-        
         switch (num){
             case 1:
-                document.querySelector(".result").innerHTML =`${player1} WINS`;
+                document.querySelector(".resultMsg").innerHTML =`${playerFactory(1)} WINS`;
                 openResult();
                 console.log("player1 wins");
                 break;
             case 2:
-                document.querySelector(".result").innerHTML =`${player2} WINS`;
+                document.querySelector(".resultMsg").innerHTML =`${playerFactory(2)} WINS`;
                 openResult();
                 console.log("player2 wins");
                 break;
             case 3:
-                document.querySelector(".result").innerHTML ="It's a draw";
+                document.querySelector(".resultMsg").innerHTML ="It's a draw";
                 openResult();
                 console.log("It's a draw");
                 break;
@@ -136,51 +143,54 @@ const Gameboard = (()=>{
         closeForm();
     };
 
+    return{play, restart, start};
+})();
 
+const playerFactory = (num) => {
+    let player1 = document.querySelector(".player1").value;
+    let player2 = document.querySelector(".player2").value;
+
+    if (player1==''){
+        player1 = "Player 1";
+    }
+
+    if (player2==''){
+        player2 = "Player 2";
+    }
+
+    switch (num){
+        case 1:
+        return player1
+
+        case 2:
+        return player2
+    }
+
+};
+
+const displayController = (()=>{
 
     function init(){
         document.querySelector(".playerPopup").style.display = "block";
     };
 
-    return{play, restart, init, start};
-})();
+    init();
 
-const playerFactory = () => {
-    
+    // 3 x 3 event listener
+    for (let i=0; i<9; i++){
+        let string = "g"+`${i}`;
+        string = document.querySelector(`.g${i}`);
+        string.addEventListener('click', ()=>Gameboard.play(i));
+    }
 
-};
-
-const displayController = (()=>{
-    Gameboard.init();
-
-    const g0 = document.querySelector(".g0");
-    g0.addEventListener('click', ()=>Gameboard.play(0));
-    const g1 = document.querySelector(".g1");
-    g1.addEventListener('click', ()=>Gameboard.play(1));
-    const g2 = document.querySelector(".g2");
-    g2.addEventListener('click', ()=>Gameboard.play(2));
-    const g3 = document.querySelector(".g3");
-    g3.addEventListener('click', ()=>Gameboard.play(3));
-    const g4 = document.querySelector(".g4");
-    g4.addEventListener('click', ()=>Gameboard.play(4));
-    const g5 = document.querySelector(".g5");
-    g5.addEventListener('click', ()=>Gameboard.play(5));
-    const g6 = document.querySelector(".g6");
-    g6.addEventListener('click', ()=>Gameboard.play(6));
-    const g7 = document.querySelector(".g7");
-    g7.addEventListener('click', ()=>Gameboard.play(7));
-    const g8 = document.querySelector(".g8");
-    g8.addEventListener('click', ()=>Gameboard.play(8));
-
+    // restart button
     const restart = document.querySelectorAll(".restart");
     for(let i=0; i<restart.length; i++){
         restart[i].addEventListener('click', ()=>Gameboard.restart());
     }
 
+    // start button
     const start = document.querySelector(".start");
     start.addEventListener('click', ()=> Gameboard.start());
-
-
-
 
 })();

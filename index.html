@@ -9,7 +9,7 @@
     <body>
         <header class="header">Tic Tac Toe</header>
         <div class="gameboard">
-            <div class="playerContainer">
+            <div class="gbContainer">
                 <div class="playerShow1"></div>
                 <div class="playerShow2"></div>
             </div>
@@ -24,23 +24,23 @@
                 <div class="grid-item g7"></div>
                 <div class="grid-item g8"></div>
             </div>
-            <div class="buttonContainer">
+            <div class="gbContainer">
                 <button class="restart">Restart</button>
             </div>
         </div>
 
         <div class="playerPopup">
-            <div class="playerContainer2">
-                <h1 class="player">Who is the best?</h1>
-                <div class="playerInput">
-                    <div class="playerInput1">
+            <div class="popupContainer">
+                <h1 class="welcomeMsg">Who is the best?</h1>
+                <div class="popupContainer2">
+                    <div class="playerInput">
                         <label for="player1"><b>Player 1</b></label>
                         <input type="text" placeholder="Christie?" name="player1" class="player1" required>
                     </div>
 
                     <button class="start">Start</button>
                     
-                    <div class="playerInput1">
+                    <div class="playerInput">
                         <label for="player2"><b>Player 2</b></label>
                         <input type="text" placeholder="Abigail?" name="player2" class="player2" required>
                     </div>
@@ -50,8 +50,8 @@
         </div>
 
         <div class="resultPopup">
-            <div class="container">
-                <p class="result"></p>
+            <div class="resultContainer">
+                <p class="resultMsg"></p>
                 <button class="restart">Restart</button>
             </div>
         </div>

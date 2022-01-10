@@ -1,7 +1,4 @@
-body{
-    background-color: black;
-}
-
+/*  header  */
 .header{
     padding:50px 0px 50px 0px;
     color:white;
@@ -9,6 +6,11 @@ body{
     font-size: 50px;
     font-family: Helvetica;
     font-weight: 100;
+}
+
+/*  body  */
+body{
+    background-color: black;
 }
 
 .gameboard{
@@ -19,34 +21,19 @@ body{
 
 }
 
+.gbContainer{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .playerShow1, .playerShow2{
     color: white;
     font-family: Helvetica;
     font-size: 30px;
-}
-
-.player{
-    color: black;
-    font-family: Helvetica;
-    font-size: 40px;
-}
-
-.playerInput{
-    display: flex;
-    gap: 100px;
-}
-
-.playerInput1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: 20px;
-}
-
-input{
-    padding:10px;
 }
 
 .grid-container{
@@ -59,15 +46,6 @@ input{
     grid-template-columns: auto auto auto;
     justify-content: space-around;
     align-items: center;
-}
-
-.playerContainer, .buttonContainer{
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .grid-item{
@@ -92,38 +70,7 @@ input{
     transform: scale(1.02);
 }
 
-.resultPopup, .playerPopup{
-    display: none;
-    /* place dead center on window*/
-    position: fixed;
-    top: 55%;  /* should be 50% if centered*/
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 800px;
-    height: 300px;
-    background-color: #e76f51;
-    border-radius: 50px;
-    transition: transform .15s; /* animation*/
-}
-
-.playerContainer2{
-    gap:20px;
-}
-
-.playerContainer2, .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.result{
-    font-size: 50px;
-    font-family: helvetica;
-    padding-top: 30px;
-}
-
+/*  buttons  */
 .restart, .start{
     cursor: pointer;
     padding: 20px;
@@ -139,4 +86,61 @@ input{
 
 .restart:active, .start:active{
     transform: translateY(3px);
+}
+
+/* initialization & result popup  */
+.playerPopup, .resultPopup{
+    display: none;
+    /* place dead center on window*/
+    position: fixed;
+    top: 55%;  /* should be 50% if centered*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 800px;
+    height: 300px;
+    background-color: #e76f51;
+    border-radius: 50px;
+    transition: transform .15s; /* animation*/
+}
+
+.popupContainer{
+    gap:20px;
+}
+
+.popupContainer, .resultContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcomeMsg{
+    color: black;
+    font-family: Helvetica;
+    font-size: 40px;
+}
+
+.popupContainer2{
+    display: flex;
+    gap: 100px;
+}
+
+.playerInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+input{
+    padding:10px;
+}
+
+.resultMsg{
+    font-size: 50px;
+    font-family: helvetica;
+    padding-top: 30px;
 }
