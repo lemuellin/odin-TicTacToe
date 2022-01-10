@@ -45,45 +45,78 @@ const Gameboard = (()=>{
     };
 
     function checkWin(){
-        const winCondition = {
-            w1:[0,1,2],
-            w2:[3,4,5],
-            w3:[6,7,8],
-            w4:[0,3,6],
-            w5:[1,4,7],
-            w6:[2,5,8],
-            w7:[0,4,8],
-            w8:[2,4,6]
-        };
 
-        function isSubSet(array1, array2){
-            return array2.every(function (element){
-                return array1.includes(element); 
-            }); 
-        };
+        const winCondition = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]];
 
+        winCondition.forEach(el => {
+            const countX = [];
+            const countO = [];
+            el.forEach(num => {
+                if(locX.includes(num)) {
+                    countX.push(num);
+                    if(countX.length === 3) {
+                        displayResult(1);
+                    }
+                }
+                if(locO.includes(num)) {
+                    countO.push(num);
+                    if(countO.length === 3) {
+                        displayResult(2);
+                    }
+                }
+            })
+            if(turn == 9){
+                displayResult(3);
+            }
+        });
 
-        if (isSubSet(locX, winCondition.w1)
-            ||isSubSet(locX, winCondition.w2)
-            ||isSubSet(locX, winCondition.w3)
-            ||isSubSet(locX, winCondition.w4)
-            ||isSubSet(locX, winCondition.w5)
-            ||isSubSet(locX, winCondition.w6)
-            ||isSubSet(locX, winCondition.w7)
-            ||isSubSet(locX, winCondition.w8)){
-            displayResult(1);
-        }else if(isSubSet(locO, winCondition.w1)
-            ||isSubSet(locO, winCondition.w2)
-            ||isSubSet(locO, winCondition.w3)
-            ||isSubSet(locO, winCondition.w4)
-            ||isSubSet(locO, winCondition.w5)
-            ||isSubSet(locO, winCondition.w6)
-            ||isSubSet(locO, winCondition.w7)
-            ||isSubSet(locO, winCondition.w8)){
-            displayResult(2);
-        }else if(turn == 9){
-            displayResult(3);
-        }
+        // Method 2
+        // const winCondition = {
+        //     w1:[0,1,2],
+        //     w2:[3,4,5],
+        //     w3:[6,7,8],
+        //     w4:[0,3,6],
+        //     w5:[1,4,7],
+        //     w6:[2,5,8],
+        //     w7:[0,4,8],
+        //     w8:[2,4,6]
+        // };
+
+        // function isSubSet(array1, array2){
+        //     return array2.every(function (element){
+        //         return array1.includes(element); 
+        //     }); 
+        // };
+
+        // if (isSubSet(locX, winCondition.w1)
+        //     ||isSubSet(locX, winCondition.w2)
+        //     ||isSubSet(locX, winCondition.w3)
+        //     ||isSubSet(locX, winCondition.w4)
+        //     ||isSubSet(locX, winCondition.w5)
+        //     ||isSubSet(locX, winCondition.w6)
+        //     ||isSubSet(locX, winCondition.w7)
+        //     ||isSubSet(locX, winCondition.w8)){
+        //     displayResult(1);
+        // }else if(isSubSet(locO, winCondition.w1)
+        //     ||isSubSet(locO, winCondition.w2)
+        //     ||isSubSet(locO, winCondition.w3)
+        //     ||isSubSet(locO, winCondition.w4)
+        //     ||isSubSet(locO, winCondition.w5)
+        //     ||isSubSet(locO, winCondition.w6)
+        //     ||isSubSet(locO, winCondition.w7)
+        //     ||isSubSet(locO, winCondition.w8)){
+        //     displayResult(2);
+        // }else if(turn == 9){
+        //     displayResult(3);
+        // }
     };
 
     const start = ()=>{
