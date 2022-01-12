@@ -63,19 +63,18 @@ const Gameboard = (()=>{
                 if(locX.includes(num)) {
                     countX.push(num);
                     if(countX.length === 3) {
-                        displayResult(1);
+                        return displayResult(1);
                     }
-                }
-                if(locO.includes(num)) {
+                }else if(locO.includes(num)) {
                     countO.push(num);
                     if(countO.length === 3) {
-                        displayResult(2);
+                        return displayResult(2);
                     }
+                }else if(turn == 9){
+                    return displayResult(3);
                 }
             })
-            if(turn == 9){
-                displayResult(3);
-            }
+
         });
 
         // Method 2
